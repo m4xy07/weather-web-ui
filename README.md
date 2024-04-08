@@ -1,5 +1,5 @@
 # weather-web-ui
- Frontend that works alongwith arduino-server-manager to display the data stored in DB onto a webpage with values and graphs
+ Frontend that works along with arduino-server-manager to display the data stored in DB onto a webpage with values and graphs
  
  Built with React and ModernUI
  
