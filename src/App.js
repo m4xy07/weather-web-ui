@@ -13,7 +13,7 @@ const App = () => {
   const [dataRange, setDataRange] = useState('lastHour');
 
   const fetchData = async () => {
-    const response = await fetch('http://host:port/data'); //Has to be the same port on which your arduino-server-manager is running
+    const response = await fetch('http://159.65.154.81:3000/data');
     const data = await response.json();
     setWeatherData(data);
     setLoading(false);
@@ -170,6 +170,18 @@ const App = () => {
               <CardContent>
                 <Typography variant="h6" component="p">Heat Index (Feels Like)</Typography>
                 <Typography variant="body1" component="p">{parseFloat(weatherData[weatherData.length - 1].hi).toFixed(3)}&deg;C</Typography>
+              </CardContent>
+            </Card>
+            <Card className={`box ${selectedField === 'alt'? 'selected' : ''}`} onClick={() => handleBoxClick('alt')}>
+              <CardContent>
+                <Typography variant="h6" component="p">Altitude</Typography>
+                <Typography variant="body1" component="p">{parseFloat(weatherData[weatherData.length - 1].alt).toFixed(3)}m</Typography>
+              </CardContent>
+            </Card>
+            <Card className={`box ${selectedField === 'pres'? 'selected' : ''}`} onClick={() => handleBoxClick('pres')}>
+              <CardContent>
+                <Typography variant="h6" component="p">Atm. Pressure</Typography>
+                <Typography variant="body1" component="p">{parseFloat((weatherData[weatherData.length - 1].pres)/100).toFixed(3)}hPa</Typography>
               </CardContent>
             </Card>
 <Card className={`box ${selectedField === 'raining'? 'selected' : ''}`} onClick={() => handleBoxClick('raining')}>
