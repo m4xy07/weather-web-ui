@@ -13,7 +13,7 @@ const App = () => {
   const [dataRange, setDataRange] = useState('lastHour');
 
   const fetchData = async () => {
-    const response = await fetch('http://159.65.154.81:3000/data');
+    const response = await fetch('http://host:port/data');
     const data = await response.json();
     setWeatherData(data);
     setLoading(false);
