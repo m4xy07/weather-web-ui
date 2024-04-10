@@ -16,7 +16,7 @@ const App = () => {
     const response = await fetch('http://host:port/data');
     const data = await response.json();
     setWeatherData(data);
-    setLoading(false);
+    setLoading(false);  //debug
   };
 
   useEffect(() => {
@@ -129,7 +129,7 @@ const App = () => {
         marginTop: '2rem',
         marginBottom: '2rem',
       }}>
-        Realtime Weather data from Arduino | Aman Shaikh
+        Realtime Weather data from Arduino | Aman
       </h1>
       {loading? (
         <p>Loading... Please wait...</p>
@@ -152,12 +152,6 @@ const App = () => {
               <CardContent>
                 <Typography variant="h6" component="p">AQI</Typography>
                 <Typography variant="body1" component="p">{weatherData[weatherData.length - 1].aqi}</Typography>
-              </CardContent>
-            </Card>
-           <Card className={`box ${selectedField === 'time'? 'selected' : ''}`} onClick={() => handleBoxClick('time')}>
-              <CardContent>
-                <Typography variant="h6" component="p">Time (Last Updated)</Typography>
-                <Typography variant="body1" component="p">{new Date(weatherData[weatherData.length - 1].time).toLocaleString()}</Typography>
               </CardContent>
             </Card>
             <Card className={`box ${selectedField === 'wifiStrength'? 'selected' : ''}`} onClick={() => handleBoxClick('wifiStrength')}>
@@ -184,10 +178,16 @@ const App = () => {
                 <Typography variant="body1" component="p">{parseFloat((weatherData[weatherData.length - 1].pres)/100).toFixed(3)}hPa</Typography>
               </CardContent>
             </Card>
-<Card className={`box ${selectedField === 'raining'? 'selected' : ''}`} onClick={() => handleBoxClick('raining')}>
+            <Card className={`box ${selectedField === 'raining'? 'selected' : ''}`} onClick={() => handleBoxClick('raining')}>
               <CardContent>
                 <Typography variant="h6" component="p">Raining</Typography>
                 <Typography variant="body1" component="p">{weatherData[weatherData.length - 1].raining}</Typography>
+              </CardContent>
+            </Card>
+             <Card className={`box ${selectedField === 'time'? 'selected' : ''}`} onClick={() => handleBoxClick('time')}>
+              <CardContent>
+                <Typography variant="h6" component="p">Time (Last Updated)</Typography>
+                <Typography variant="body1" component="p">{new Date(weatherData[weatherData.length - 1].time).toLocaleString()}</Typography>
               </CardContent>
             </Card>
           </div>
