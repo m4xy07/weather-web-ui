@@ -129,7 +129,7 @@ const App = () => {
         marginTop: '2rem',
         marginBottom: '2rem',
       }}>
-        Realtime Weather data from Arduino | Aman
+        Realtime Weather Data from Arduino
       </h1>
       {loading? (
         <p>Loading... Please wait...</p>
@@ -176,6 +176,12 @@ const App = () => {
               <CardContent>
                 <Typography variant="h6" component="p">Atm. Pressure</Typography>
                 <Typography variant="body1" component="p">{parseFloat((weatherData[weatherData.length - 1].pres)/100).toFixed(3)}hPa</Typography>
+              </CardContent>
+            </Card>
+            <Card className={`box ${selectedField === 'moisture'? 'selected' : ''}`} onClick={() => handleBoxClick('moisture')}>
+              <CardContent>
+                <Typography variant="h6" component="p">Soil Moisture</Typography>
+                <Typography variant="body1" component="p">{parseFloat((weatherData[weatherData.length - 1].moisture)).toFixed(3)}%</Typography>
               </CardContent>
             </Card>
             <Card className={`box ${selectedField === 'raining'? 'selected' : ''}`} onClick={() => handleBoxClick('raining')}>
